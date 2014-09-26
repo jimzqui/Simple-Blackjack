@@ -1,0 +1,314 @@
+/**
+ * typography.css
+ * Sets up some sensible default typography.
+ *
+ * 01. GENERAL TYPOGRAPHY
+ *	   1. Headings
+ *	   2. Text Elements
+ *	   3. Lists
+ *	   4. Tables
+ *	   5. Misc Classes
+ */
+
+
+/* ----------------------------------------------------------------------------------------------------------------
+                                                  01. GENERAL TYPOGRAPHY
+---------------------------------------------------------------------------------------------------------------- */
+
+
+/* ------- 1. Headings ------- */
+
+h1, h2, h3, h4, h5, h6 { 
+font-weight: normal; 
+color: #99e9ff; 
+margin: 0;
+}
+
+h1 {
+font-size:29px;
+}
+
+h2 {
+font-size:27px;
+}
+
+h3 {
+font-size:24px;
+}
+
+h4 {
+font-size:21px;
+}
+
+h5{
+font-size:18px;
+font-weight:bold;
+}
+
+h6 {
+font-size:16px;
+font-weight:bold;
+}
+
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img{
+margin: 0;
+}
+
+
+/* ------- 2. Text Elements ------- */
+
+p {
+margin:0 0 15px 0;
+}
+
+img {
+border:none;
+}
+
+p img.left {
+float:left;
+margin:1.5em 1.5em 1.5em 0;
+padding:0;
+}
+
+p img.left-top {
+float:left;
+margin:0.5em 1.5em 1.5em 0;
+padding:0;
+}
+
+p img.right {
+float:right;
+margin:1.5em 0 1.5em 1.5em;
+}
+
+p img.right-top {
+float:right;
+margin:0.5em 0 1.5em 1.5em;
+}
+
+a:focus, a:hover {
+text-decoration: underline; 
+}
+
+a { 
+color:#fff; 
+text-decoration:none; 
+outline:none;
+}
+
+blockquote {
+background:#ececec;
+margin:0 0 1.5em 0.7em;
+padding:10px;
+color:#000000;
+display:block;
+border-left:2px solid #d3d3d3;
+font-style:italic;
+}
+
+blockquote p {
+margin:0;
+}
+
+strong {
+font-weight:bold;
+}
+
+em {
+font-style:italic;
+}
+
+dfn, var, cite {
+font-style:normal;
+font-weight:normal;
+font-family:arial,verdana,sans-serif;
+}
+
+sup, sub {
+line-height:0;
+}
+
+abbr, acronym {
+border-bottom:1px dotted #666;
+}
+
+address {
+margin:0 0 1.5em;
+padding:10px;
+font-style:italic;
+font-size:13px;
+font-weight:bold;
+}
+
+del {
+color:#666;
+}
+
+pre {
+margin:1.5em 0;
+white-space:pre;
+}
+
+pre, code, tt {
+font:1em 'andale mono', 'lucida console', monospace;
+line-height:1.5;
+}
+
+hr {
+border:none;
+border-top:1px dashed #555;
+margin:15px 0 0 0;
+}
+
+textarea {
+display:block;
+width:100%;
+margin:15px 0;
+}
+
+/* ------- 3. Lists ------- */
+
+li ul, li ol {
+margin:0 1.5em;
+}
+
+ul, ol {
+margin:0 0 15px;
+padding:0 0 0 20px;
+}
+
+ul {
+list-style-type:disc;
+}
+
+ul li ul {
+list-style-type:circle;
+}
+
+ul li ul li ul {
+list-style-type:square;
+}
+
+ol {
+list-style-type:decimal;
+}
+
+dl {
+margin:0 0 1.5em 0;
+}
+
+dl dt {
+font-weight:bold;
+}
+
+dd {
+margin-left:1.5em;
+}
+
+/* ------- 4. Tables ------- */
+
+table {
+width:100%;
+}
+
+th {
+font-weight:bold;
+}
+
+thead th {
+background:#c3d9ff;
+}
+
+th,td,caption {
+padding:4px 10px 4px 5px;
+}
+
+tr.even td {
+background:#e5ecf9;
+}
+
+tfoot {
+font-style:italic;
+}
+
+caption {
+background:#eee;
+}
+
+/* ------- 5. Misc Classes ------- */
+
+.small {
+font-size:.8em;
+margin-bottom:1.875em;
+line-height:1.875em;
+}
+
+.large {
+font-size:1.2em;
+line-height:2.5em;
+margin-bottom:1.25em;
+}
+
+.hide {
+display:none;
+}
+
+.quiet {
+color:#666;
+}
+
+.loud {
+font-weight:bold;
+}
+
+.ext-loud {
+color:#fff;
+font-family:"trebuchet ms";
+font-size:14px;
+font-weight:bold;
+text-transform:uppercase;
+}
+
+.highlight {
+background:#ff0;
+}
+
+.added {
+background:#060;
+color:#fff;
+}
+
+.removed {
+background:#900;
+color:#fff;
+}
+
+.italized {
+font-style:italic;
+}
+
+.last {
+margin-right:0;
+padding-right:0;
+}
+
+.top {
+margin-top:0;
+padding-top:0;
+}
+
+.bottom {
+margin-bottom:0;
+padding-bottom:0;
+}
+
+.clearfix {
+clear:both;
+}
+
+.textimage {
+text-indent:3000px;
+white-space:nowrap;
+overflow:hidden;
+}

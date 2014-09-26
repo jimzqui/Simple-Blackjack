@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/typography.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript" src="js/misc.js"></script>
+<script type="text/javascript" src="js/blackjack.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="demo">
+			<!-- Animations -->
+			<div id="anim-eyes"></div>
+			<div id="anim-eyebrows"></div>
+			<div id="anim-hands"></div>
+			
+			<!-- Animations -->
+			<div id="message"></div>
+			<div id="button-deal" class="button">Deal</div>
+			
+			<!-- Actions -->
+			<div id="actions">
+				<a id="button-hit" class="button">Hit</a>
+				<a id="button-stand" class="button">Stand</a>
+				<div id="scores">
+					<div id="player-score">
+						<input type="text" class="score" disabled="disabled"/>
+					</div>
+					<div id="dealer-score">
+						<input type="text" class="score" disabled="disabled"/>
+					</div>
+				</div>
+			</div>
+			
+			<div id="player">
+				<span class="hands"></span>
+				<dfn class="user">Player</dfn>
+				<input type="text" class="count" disabled="disabled"/>
+				<input type="hidden" class="countbase"/>
+			</div>
+			<div id="dealer">
+				<span class="hands"></span>
+				<dfn class="user">Dealer</dfn>
+				<input type="text" class="count" disabled="disabled"/>
+				<input type="hidden" class="countbase"/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
