@@ -14,9 +14,15 @@
             var that = jqblackjack.game;
             if (options == undefined) options = {};
 
-            // Construct controls
-            that.buttons.el = $.extend({}, Controls.buttons, options.buttons);
-            that.system.el = $.extend({}, Controls.system, options.system);
+            // Construct buttons
+            that.buttons = {
+                el: $.extend({}, Controls.buttons, options.buttons)
+            };
+
+            // Construct system
+            that.system = {
+                el: $.extend({}, Controls.system, options.system)
+            };
 
             // Create player
             that.player = new Actor({
@@ -364,9 +370,7 @@
             that.deck.status = 'over';
         },
 
-        // System
-        buttons: {},
-        system: {},
+        // Messages
         messages: {
             you_win: 'You Win!',
             house_win: 'House Wins!',
@@ -384,230 +388,64 @@
         },
     };
 
-    // Card class
-    var Card = Class.extend({
+    // Anim object
+    jqblackjack.anim = {
 
-        // Init
-        init: function(shuffle) {
-            var that = this;
-            that.value = shuffle.value;
-            that.suit = that.pickSuit(shuffle.suit);
-            that.name = that.getName();
-            that.slug = that.getSlug();
-            that.img = that.getImg();
-        },
+        // Initialize
+        init: function(options) {
+            var that = jqblackjack.anim;
+            if (options == undefined) options = {};
 
-        // Pick suit
-        pickSuit: function() {
-            var that = this;
-            var rand = (Math.random() * 4);
-            rand = Math.floor(rand + 1);
-            switch(rand) {
-                case 1: return 'Clubs'; break;
-                case 2: return 'Spades'; break;
-                case 3: return 'Diamonds'; break;
-                case 4: return 'Hearts'; break;
-                default: return 'Clubs';
-            }
-        },
-
-        // Get name
-        getName: function() {
-            var that = this;
-            switch(that.value) {
-                case 1: return 'Ace'; break;
-                case 11: return 'Jack'; break;
-                case 12: return 'Queen'; break;
-                case 13: return 'King'; break;
-                default: return that.value;
-            }
-        },
-
-        // Get slug
-        getSlug: function() {
-            var that = this;
-            return this.value + '-' + that.suit;
-        },
-
-        // Get img
-        getImg: function() {
-            var that = this;
-            return '<img class="card" src="cards/' + that.slug + '.png" />';
-        },
-
-        // Insert card
-        insert: function(actor, face, timeout) {
-            var that = this;
-            that.face = face;
-            that.actor = actor;
-            that.timeout = timeout;
-
-            // Push to array
-            that.actor.cards.push(that);
-
-            // Update actor count
-            that.actor.count = actor.getCount();
-
-            // Only display players count
-            if (that.actor.house == false) {
-                that.actor.el.count.val(that.actor.count);
-            }
-
-            // Display card
-            that.place();
-            that.animate();
-        },
-
-        // Place card in table
-        place: function() {
-            var that = this;
-
-            // Display card
-            var pos1 = that.actor.el.cards.offset();
-            setTimeout(function() {
-                that.el = $(that.img).appendTo('body');
-                that.flip(that.face);
-                that.el.css({
-                    position: 'absolute',
-                    left: pos1.left,
-                    top: pos1.top
-                });
-            }, that.timeout);
-        },
-
-        // Animate card to position
-        animate: function() {
-            var that = this;
-
-            // Animate card
-            var pos2 = that.actor.el.hands.offset();
-            var adjust_left = (that.actor.cards.length - 1) * 10;
-            if (that.actor.cards.length % 2 == 0) { var adjust_top = 10; } 
-            else { var adjust_top = 0; }
-            setTimeout(function() {
-                that.el.animate({
-                    position: 'absolute',
-                    left: pos2.left + adjust_left,
-                    top: pos2.top + adjust_top
-                }, 'fast');
-            }, that.timeout + 250);
-        },
-
-        // Flip card
-        flip: function(face) {
-            var that = this;
-            that.face = face;
-
-            if (face == 'facedown') {
-                that.el.attr('src', 'cards/facedown.png');
-                that.el.removeClass('faceup');
-                that.el.addClass('facedown');
-            } else {
-                that.el.attr('src', 'cards/' + that.slug + '.png');
-                that.el.removeClass('facedown');
-                that.el.addClass('faceup');
-            }
-        }
-    });
-
-    // Deck class
-    var Deck = Class.extend({
-
-        // Init
-        init: function() {
-            var that = this;
-            that.status = 'new';
-        },
-
-        // Shuffle deck
-        shuffle: function() {
-            var that = this;
-
-            // Randomize
-            var value = Math.floor((Math.random() * 12) + 1);
-            var suit = Math.floor((Math.random() * 4) + 1);
-
-            // Return radomized num
-            return { value: value, suit: suit }
-        },
-
-        // Pick card from deck
-        pick: function() {
-            var that = this;
-
-            // Shuffle deck
-            var shuffle = this.shuffle();
-
-            // Instantiate new card
-            var card = new Card(shuffle);
-
-            // Return card
-            return card;
-        },
-
-        // Set status
-        setStatus: function(status) {
-            var that = this;
-            that.status = status;
-        }
-    });
-
-    // Actor class
-    var Actor = Class.extend({
-
-        // Init
-        init: function(controls) {
-            var that = this;
-            that.cards = [];
-            that.score = 0;
-            that.count = 0;
-            that.el = controls.el;
-            that.house = controls.house;
-        },
-
-        // Retrieve count
-        getCount: function() {
-            var that = this;
-            var count = 0;
-
-            // Iterate through cards
-            for (var i = 0; i < that.cards.length; i++) {
-                var card = that.cards[i];
-                count += card.value;
+            // Construct buttons
+            that.buttons = {
+                el: $.extend({}, Controls.buttons, options.buttons)
             };
 
-            // Return count
-            return count;
+            // Construct parts
+            that.parts = {
+                el: $.extend({}, Controls.parts, options.parts)
+            };
+
+            // Setup buttons
+            that.buttons.el.hit.click(function() {
+                that.hands('hit');
+            });
+
+            that.buttons.el.stand.click(function() {
+                that.hands('stand');
+            });
         },
 
-        // Reset count
-        resetCount: function() {
+        eyes: function(file) {
             var that = this;
-            that.count = 0;
-            that.el.count.val('');
+            that.clear();
+            $(that.img(file + '.gif')).appendTo(that.parts.el.eyes);
         },
 
-        // Reset score
-        resetScore: function() {
+        eyebrows: function(file) {
             var that = this;
-            that.score = 0;
-            that.el.score.val('');
+            that.clear();
+            return $(that.img(file + '.gif')).appendTo(that.parts.el.eyebrows);
         },
 
-        // Reset cards
-        resetCards: function() {
+        hands: function(file) {
             var that = this;
-            that.cards = [];
-            that.el.hands.empty();
+            that.clear();
+            return $(that.img(file + '.gif')).appendTo(that.parts.el.hands);
         },
 
-        // Increase score
-        win: function() {
+        img: function(file, timestamp) {
+            var timestamp = new Date().getTime();
+            return '<img src="images/' + file + '?lastmod=' + timestamp + '" alt=""/>';
+        },
+
+        clear: function() {
             var that = this;
-            that.score++;
-            that.el.score.val(that.score);
+            that.parts.el.eyes.empty();
+            that.parts.el.eyebrows.empty();
+            that.parts.el.hands.empty();
         }
-    });
+    };
 
     // Controls ojbect
     var Controls = {
@@ -642,6 +480,13 @@
             player_score: $('#player-score'),
             dealer_score: $('#dealer-score')
         },
+
+        // Anim
+        parts: {
+            eyes: $('#anim-eyes'),
+            eyebrows: $('#anim-eyebrows'),
+            hands: $('#anim-hands')
+        }
     };
 
 })( window.jqblackjack = window.jqblackjack || {});
