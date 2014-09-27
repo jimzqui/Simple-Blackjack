@@ -176,7 +176,7 @@
 
             // Check result
             setTimeout(function() {
-                that.checkBlackjack();
+                that.checkHit();
                 that.checkState();
             }, (count1 + 1) * 500);
         },
