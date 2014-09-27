@@ -9,18 +9,28 @@ var Card = Class.extend({
     // Init
     init: function(shuffle) {
         var that = this;
-        that.value = shuffle.value;
-        that.suit = that.pickSuit(shuffle.suit);
+        that.num = shuffle.value;
+        that.value = that.getValue(shuffle.value);
+        that.suit = that.getSuit(shuffle.suit);
         that.name = that.getName();
         that.slug = that.getSlug();
         that.img = that.getImg();
     },
 
-    // Pick suit
-    pickSuit: function() {
+    // Get value
+    getValue: function(rand) {
         var that = this;
-        var rand = (Math.random() * 4);
-        rand = Math.floor(rand + 1);
+        switch(rand) {
+            case 11: return 10; break;
+            case 12: return 10; break;
+            case 13: return 10; break;
+            default: return rand;
+        }
+    },
+
+    // Get suit
+    getSuit: function(rand) {
+        var that = this;
         switch(rand) {
             case 1: return 'Clubs'; break;
             case 2: return 'Spades'; break;
@@ -33,19 +43,19 @@ var Card = Class.extend({
     // Get name
     getName: function() {
         var that = this;
-        switch(that.value) {
+        switch(that.num) {
             case 1: return 'Ace'; break;
             case 11: return 'Jack'; break;
             case 12: return 'Queen'; break;
             case 13: return 'King'; break;
-            default: return that.value;
+            default: return that.num;
         }
     },
 
     // Get slug
     getSlug: function() {
         var that = this;
-        return this.value + '-' + that.suit;
+        return this.num + '-' + that.suit;
     },
 
     // Get img
