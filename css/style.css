@@ -7,250 +7,261 @@
  */
 
 
-/* ----------------------------------------------------------------------------------------------------------------
-                                                  01. GENERAL LAYOUT
----------------------------------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------
+                                 01. GENERAL LAYOUT
+-------------------------------------------------------------------------------- */
 
 
 /* ------- 1. Main ------- */
 
 html, #wrapper {
-height: 100%;
+	height:  100%;
 }
 
 body > #wrapper {
-height: auto;
-min-height: 100%;
+	height:  auto;
+	min-height:  100%;
 }
 
 body {
-margin:0;
-background-color:#222;
-font-size:14px;
-font-family:arial,verdana,sans-serif;
+	margin: 0;
+	background-color: #222;
+	font-size: 14px;
+	font-family: arial,verdana,sans-serif;
 }
 
-#wrapper{
-width:442px;
-margin:0 auto;
+#wrapper {
+	width: 442px;
+	margin: 0 auto;
 }
 
-#demo{
-background:url(../images/bg-demo.jpg) no-repeat;
-width:442px;
-height:575px;
-float:left;
-position:relative;
+#demo {
+	background: url(../images/bg-demo.jpg) no-repeat;
+	width: 442px;
+	height: 575px;
+	float: left;
+	position: relative;
 }
 
-#actions{
-width:92px;
-height:182px;
-float:left;
-position:absolute;
-left:256px;
-top:278px;
+#actions {
+	width: 92px;
+	height: 182px;
+	float: left;
+	position: absolute;
+	left: 256px;
+	top: 278px;
 }
 
-.button{
-background:url(../images/button.png) scroll 0 bottom no-repeat;
-width:73px;
-height:18px;
-float:left;
-margin:10px 10px 0;
-cursor:pointer;
-padding:4px 0 0;
-text-align:center;
-text-transform:uppercase;
-font-size:11px;
-color:#fff;
+.button {
+	background: url(../images/button.png) scroll 0 bottom no-repeat;
+	width: 73px;
+	height: 18px;
+	float: left;
+	margin: 10px 10px 0;
+	cursor: pointer;
+	padding: 4px 0 0;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 11px;
+	color: #fff;
 }
 
-.button:hover{
-text-decoration:none;
-opacity:0.8;
-filter:alpha(opacity = 80);
+.button.disabled {
+	opacity: 0.5;
+	cursor: default;
 }
 
-#button-deal{
-position:absolute;
-left:174px;
-top:218px;
-height:15px;
-padding:1px 0 3px;
+.button: hover {
+	text-decoration: none;
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
 }
 
-#anim-eyes{
-width:33px;
-height:7px;
-float:left;
-position:absolute;
-left:151px;
-top:297px;
+#button-deal, #button-newhand {
+	position: absolute;
+	left: 174px;
+	top: 218px;
+	height: 15px;
+	padding: 1px 0 3px;
 }
 
-#anim-eyebrows{
-width:33px;
-height:8px;
-float:left;
-position:absolute;
-left:151px;
-top:289px;
+#anim-eyes {
+	width: 33px;
+	height: 7px;
+	float: left;
+	position: absolute;
+	left: 151px;
+	top: 297px;
 }
 
-#anim-hands{
-width:70px;
-height:60px;
-float:left;
-position:absolute;
-left:154px;
-top:443px;
+#anim-eyebrows {
+	width: 33px;
+	height: 8px;
+	float: left;
+	position: absolute;
+	left: 151px;
+	top: 289px;
 }
 
-#player, #dealer{
-width:90px;
-float:left;
-position:absolute;
-bottom:10px;
-padding:0 0 8px 8px;
+#anim-hands {
+	width: 70px;
+	height: 60px;
+	float: left;
+	position: absolute;
+	left: 154px;
+	top: 443px;
 }
 
-#player{
-float:left;
-left:25px;
+#player, #dealer {
+	width: 90px;
+	float: left;
+	position: absolute;
+	bottom: 10px;
+	padding: 0 0 8px 8px;
 }
 
-#dealer{
-float:right;
-right:25px;
+#player {
+	float: left;
+	left: 25px;
 }
 
-.user{
-background:url(../images/bg-blacktrans.png) repeat;
-border:1px solid #70302E;
-color:#fff;
-font-size:11px;
-padding:2px 5px;
-width:65px;
-text-align:center;
-float:left;
-position:relative;
-left:5px;
-top:5px;
--moz-border-radius:4px;
--webkit-border-radius:4px;
+#dealer {
+	float: right;
+	right: 25px;
 }
 
-.count{
-background:url(../images/bg-blackcircle.png) scroll 0 2px no-repeat;
-width:27px;
-height:27px;
-float:left;
-color:#fff;
-font-weight:bold;
-text-align:center;
-padding:0;
-position:absolute;
-left:0;
-bottom:0;
-font-family:arial;
-border:none;
+.user {
+	background: url(../images/bg-blacktrans.png) repeat;
+	border: 1px solid #70302E;
+	color: #fff;
+	font-size: 11px;
+	padding: 2px 5px;
+	width: 65px;
+	text-align: center;
+	float: left;
+	position: relative;
+	left: 5px;
+	top: 5px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 }
 
-.hands{
-float:left;
-margin:0 0 0 38px;
-width:auto;
-height:63px;
+.count {
+	background: url(../images/bg-blackcircle.png) scroll 0 2px no-repeat;
+	width: 27px;
+	height: 27px;
+	float: left;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	font-family: arial;
+	border: none;
 }
 
-.hands img{
-width:47px;
-height:63px;
-float:left;
-margin:0 0 0 -38px;
--moz-border-radius:5px;
--webkit-border-radius:5px;
+.hands {
+	float: left;
+	margin: 0;
+	width: 100px;
+	height: 70px;
 }
 
-.hands img.odd{
-margin-top:-4px;
+.hands img {
+	width: 47px;
+	height: 63px;
+	float: left;
+	margin: 0 0 0 -38px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 
-#message{
-width:264px;
-height:21px;
-float:left;
-position:absolute;
-top:199px;
-left:88px;
-color:#fff;
-text-align:center;
-padding:6px 0 0;
-text-transform:uppercase;
-color:#D29609;
-font-weight:bold;
+.hands img: nth-child(odd) {
+	margin-top: -4px;
 }
 
-#scores{
-background:url(../images/bg-scores.png) no-repeat;
-width:71px;
-height:96px;
-float:left;
-position:relative;
-left:10px;
-top:10px;
+#message {
+	width: 264px;
+	height: 21px;
+	float: left;
+	position: absolute;
+	top: 199px;
+	left: 88px;
+	color: #fff;
+	text-align: center;
+	padding: 6px 0 0;
+	text-transform: uppercase;
+	color: #D29609;
+	font-weight: bold;
 }
 
-#player-score, #dealer-score{
-color:#fff;
-font-size:11px;
-float:left;
-text-align:center;
-width:47px;
-height:63px;
-position:relative;
+#cards {
+	background: url(../images/bg-scores.png) no-repeat;
+	width: 71px;
+	height: 96px;
+	float: left;
+	position: relative;
+	left: 10px;
+	top: 10px;
 }
 
-#player-score{
-position:absolute;
-left:0;
-top:0;
-z-index:1;
+#player-cards, #dealer-cards {
+	color: #fff;
+	font-size: 11px;
+	float: left;
+	text-align: center;
+	width: 47px;
+	height: 63px;
+	position: relative;
 }
 
-#dealer-score{
-position:absolute;
-right:0;
-bottom:0;
+#player-cards {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
 }
 
-#player-score img, #dealer-score img{
-width:47px;
-height:63px;
-float:left;
-position:absolute;
-left:0;
-top:0;
+#dealer-cards {
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
 
-#scores .score{
-text-align:center;
-background:none;
-border:none;
-font-size:11px;
-position:absolute;
-width:47px;
+#player-cards img, #dealer-cards img {
+	width: 47px;
+	height: 63px;
+	float: left;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 
-#player-score .score{
-text-align:left;
-left:3px;
-top:3px;
+#cards .score {
+	text-align: center;
+	background: none;
+	border: none;
+	font-size: 20px;
+	position: absolute;
+	width: 47px;
 }
 
-#dealer-score .score{
-text-align:right;
-right:3px;
-bottom:3px;
+#player-cards .score {
+	text-align: left;
+	left: 3px;
+	top: 3px;
+}
+
+#dealer-cards .score {
+	text-align: right;
+	right: 3px;
+	bottom: 3px;
+}
+
+.card {
+	width: 47px;
+	height: 63px;
+	z-index: 1;
 }

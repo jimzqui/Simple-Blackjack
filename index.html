@@ -1,53 +1,74 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/typography.css" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
-<script type="text/javascript" src="js/misc.js"></script>
-<script type="text/javascript" src="js/blackjack.js"></script>
-</head>
-<body>
-	<div id="wrapper">
-		<div id="demo">
-			<!-- Animations -->
-			<div id="anim-eyes"></div>
-			<div id="anim-eyebrows"></div>
-			<div id="anim-hands"></div>
-			
-			<!-- Animations -->
-			<div id="message"></div>
-			<div id="button-deal" class="button">Deal</div>
-			
-			<!-- Actions -->
-			<div id="actions">
-				<a id="button-hit" class="button">Hit</a>
-				<a id="button-stand" class="button">Stand</a>
-				<div id="scores">
-					<div id="player-score">
-						<input type="text" class="score" disabled="disabled"/>
-					</div>
-					<div id="dealer-score">
-						<input type="text" class="score" disabled="disabled"/>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]><html class="no-js lt-ie10"><![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"><!--<![endif]-->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Simple Blackjack v1.0</title>
+		<meta name="description" content="<?php echo $title_for_layout ?>">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Load CSS -->
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+		<link rel="stylesheet" href="css/typography.css" type="text/css" />
+
+		<!-- Load JS -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/class.js"></script>
+	</head>
+	<body>
+
+		<!-- Main content -->
+		<div id="wrapper">
+			<div id="demo">
+
+				<!-- Animations -->
+				<div id="anim-eyes"></div>
+				<div id="anim-eyebrows"></div>
+				<div id="anim-hands"></div>
+				
+				<!-- Message -->
+				<div id="message"></div>
+				<div id="button-deal" class="button">Deal</div>
+				<div id="button-newhand" class="button">New Hand</div>
+				
+				<!-- Actions -->
+				<div id="actions">
+					<a id="button-hit" class="button">Hit</a>
+					<a id="button-stand" class="button">Stand</a>
+					<div id="cards">
+						<div id="player-cards">
+							<input id="player-score" class="score" type="text" disabled="disabled"/>
+						</div>
+						<div id="dealer-cards">
+							<input id="dealer-score" class="score" type="text" disabled="disabled"/>
+						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div id="player">
-				<span class="hands"></span>
-				<dfn class="user">Player</dfn>
-				<input type="text" class="count" disabled="disabled"/>
-				<input type="hidden" class="countbase"/>
-			</div>
-			<div id="dealer">
-				<span class="hands"></span>
-				<dfn class="user">Dealer</dfn>
-				<input type="text" class="count" disabled="disabled"/>
-				<input type="hidden" class="countbase"/>
+				
+				<!-- Player -->
+				<div id="player">
+					<span id="player-hands" class="hands"></span>
+					<dfn class="user">Player</dfn>
+					<input id="player-count" type="text" class="count" disabled="disabled"/>
+					<input id="player-countbase" type="hidden" class="countbase"/>
+				</div>
+
+				<!-- Dealer -->
+				<div id="dealer">
+					<span id="dealer-hands" class="hands"></span>
+					<dfn class="user">Dealer</dfn>
+					<input id="dealer-count" type="text" class="count" disabled="disabled"/>
+					<input id="dealer-countbase" type="hidden" class="countbase"/>
+				</div>
 			</div>
 		</div>
-	</div>
-</body>
+
+		<!-- Main JS -->
+		<script type="text/javascript" src="js/jqblackjack.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
 </html>

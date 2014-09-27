@@ -4,6 +4,8 @@ var anim_hands;
 
 $(document).ready(function() {
 
+  jqblackjack.game.init();
+
   anim_eyes = $('#anim-eyes');
   anim_eyebrows = $('#anim-eyebrows');
   anim_hands = $('#anim-hands');

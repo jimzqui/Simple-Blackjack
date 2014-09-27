@@ -9,24 +9,24 @@ var message,
 	dealer_count,
 	player_countbase,
 	dealer_countbase,
-	player_scoreholder,
-	dealer_scoreholder,
+	player_cards,
+	dealer_cards,
 	player_score,
 	dealer_score;
 
 $(document).ready(function() {
 
   message = $('#message');
-  player_hands = $('#player').find('.hands');
-  dealer_hands = $('#dealer').find('.hands');
-  player_count = $('#player').find('.count');
-  dealer_count = $('#dealer').find('.count');
-  player_countbase = $('#player').find('.countbase');
-  dealer_countbase = $('#dealer').find('.countbase');
-  player_scoreholder = $('#player-score');
-  dealer_scoreholder = $('#dealer-score');
-  player_score = player_scoreholder.find('.score');
-  dealer_score = dealer_scoreholder.find('.score');
+  player_hands = $('#player-hands');
+  dealer_hands = $('#dealer-hands');
+  player_count = $('#player-count');
+  dealer_count = $('#dealer-count');
+  player_countbase = $('#player-countbase');
+  dealer_countbase = $('#dealer-countbase');
+  player_cards = $('#player-cards');
+  dealer_cards = $('#dealer-cards');
+  player_score = $('#player-score');
+  dealer_score = $('#dealer-score');
   animating = false;
   
   setBj();
@@ -90,16 +90,16 @@ function pickCard(str_who, face) {
 
   displayCard(str_who, card_slug, face);
   
-  return cardValue(card, face);
+  return cardValue(card, str_who);
 }
 
 function displayCard(str_who, card_slug, face) {
   if(str_who == 'You') {
-    var hands = player_scoreholder;
+    var hands = player_cards;
     var count = player_hands.find('img.faceup').length;
   }
   else {
-    var hands = dealer_scoreholder;
+    var hands = dealer_cards;
     var count = dealer_hands.find('img.faceup').length;
   }
 
@@ -145,8 +145,8 @@ function animateCards() {
 }
 
 function distributeCards() {
-  var player_card = player_scoreholder.find('img');
-  var dealer_card = dealer_scoreholder.find('img');
+  var player_card = player_cards.find('img');
+  var dealer_card = dealer_cards.find('img');
   var player_clone = player_card.clone();
   var dealer_clone = dealer_card.clone();
 
@@ -185,6 +185,8 @@ function newHand() {
       player_countbase.val(parseInt(player_countbase.val()) + pickCard('You'));
 	  dealer_countbase.val(parseInt(dealer_countbase.val()) + pickCard('Dealer', 'facedown'));
     }, 1000);
+
+    lookAtHands();
   }
 }
 
