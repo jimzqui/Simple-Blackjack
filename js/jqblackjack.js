@@ -293,11 +293,27 @@
         checkResult: function() {
             var that = this;
 
-            // If player exceeds 21
+            // If player tied with dealer
             if (that.player.count == that.dealer.count) {
                 that.revealCards();
                 that.gameOver();
                 return that.message(that.messages.game_tied);
+            }
+
+            // If player exceeds 21
+            else if (that.player.count > 21) {
+                that.revealCards();
+                that.dealer.win();
+                that.gameOver();
+                return that.message(that.messages.you_busted);
+            }
+
+            // If dealer exceeds 21
+            else if (that.dealer.count > 21) {
+                that.revealCards();
+                that.player.win();
+                that.gameOver();
+                return that.message(that.messages.house_bust);
             }
 
             // If player has greater than the dealer
@@ -308,28 +324,20 @@
                 return that.message(that.messages.you_win);
             }
 
+            // If dealer has greater than the player
+            else if (that.player.count < that.dealer.count) {
+                that.revealCards();
+                that.dealer.win();
+                that.gameOver();
+                return that.message(that.messages.house_win);
+            }
+
             // If player has 21
             else if (that.player.count == 21) {
                 that.revealCards();
                 that.player.win();
                 that.gameOver();
                 return that.message(that.messages.house_blackjack);
-            }
-
-            // If player is close to dealer's blackjack
-            else if (that.player.count == 20 && that.dealer.count == 21) {
-                that.revealCards();
-                that.dealer.win();
-                that.gameOver();
-                return that.message(that.messages.tough_luck);
-            }
-
-            // If dealer has greater than 21
-            else if (that.dealer.count > 21) {
-                that.revealCards();
-                that.player.win();
-                that.gameOver();
-                return that.message(that.messages.house_bust);
             }
 
             // If dealer has 21
@@ -340,11 +348,12 @@
                 return that.message(that.messages.house_blackjack);
             }
 
-            else {
+            // If player is close to dealer's blackjack
+            else if (that.player.count == 20 && that.dealer.count == 21) {
                 that.revealCards();
-                that.player.win();
+                that.dealer.win();
                 that.gameOver();
-                return that.message(that.messages.you_win);
+                return that.message(that.messages.tough_luck);
             }
         },
 
