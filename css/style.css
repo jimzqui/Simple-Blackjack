@@ -37,19 +37,21 @@ body {
 
 #demo {
 	background: url(../images/bg-demo.jpg) no-repeat;
-	width: 442px;
-	height: 575px;
 	float: left;
-	position: relative;
+    height: 407px;
+    margin-top: -203px;
+    position: absolute;
+    top: 50%;
+    width: 442px;
 }
 
 #actions {
-	width: 92px;
-	height: 182px;
 	float: left;
-	position: absolute;
-	left: 256px;
-	top: 278px;
+    height: 182px;
+    left: 256px;
+    position: absolute;
+    top: 110px;
+    width: 92px;
 }
 
 .button {
@@ -78,11 +80,12 @@ body {
 }
 
 #button-deal, #button-newhand {
-	position: absolute;
-	left: 174px;
-	top: 218px;
 	height: 15px;
-	padding: 1px 0 3px;
+    left: 50%;
+    margin: 0 0 0 -36px;
+    padding: 1px 0 3px;
+    position: absolute;
+    top: 60px;
 }
 
 #anim-eyes {
@@ -91,16 +94,16 @@ body {
 	float: left;
 	position: absolute;
 	left: 151px;
-	top: 297px;
+	top: 129px;
 }
 
 #anim-eyebrows {
-	width: 33px;
-	height: 8px;
 	float: left;
-	position: absolute;
-	left: 151px;
-	top: 283px;
+    height: 8px;
+    left: 151px;
+    position: absolute;
+    top: 115px;
+    width: 33px;
 }
 
 #anim-hands {
@@ -109,15 +112,15 @@ body {
 	float: left;
 	position: absolute;
 	left: 154px;
-	top: 443px;
+	top: 275px;
 }
 
 #player, #dealer {
-	width: 90px;
 	float: left;
-	position: absolute;
-	bottom: 10px;
-	padding: 0 0 8px 8px;
+    padding: 0 0 8px 8px;
+    position: absolute;
+    top: 302px;
+    width: 90px;
 }
 
 #player {
@@ -183,18 +186,18 @@ body {
 }
 
 #message {
-	width: 264px;
-	height: 21px;
-	float: left;
-	position: absolute;
-	top: 199px;
-	left: 88px;
-	color: #fff;
-	text-align: center;
-	padding: 6px 0 0;
-	text-transform: uppercase;
-	color: #D29609;
-	font-weight: bold;
+	color: #d29609;
+    float: left;
+    font-weight: bold;
+    height: 28px;
+    left: 88px;
+    line-height: 28px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 30px;
+    width: 264px;
 }
 
 #cards {
