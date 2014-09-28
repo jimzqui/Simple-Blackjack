@@ -80,18 +80,11 @@ var JQblackjack = Class.extend({
             house: true
         });
 
-        // Create deck
-        that.deck = new Deck();
-
         // Create anim
         that.anim = new Anim(that.parts);
 
         // Reset
         that.reset();
-
-        // Reset score only onload
-        that.player.resetScore();
-        that.dealer.resetScore();
 
         // Start
         that.start();
@@ -100,6 +93,9 @@ var JQblackjack = Class.extend({
     // Reset game
     reset: function() {
         var that = this;
+
+        // Create deck
+        that.deck = new Deck();
 
         // Reset cards
         that.player.resetCards();
@@ -116,7 +112,7 @@ var JQblackjack = Class.extend({
         var that = this;
 
         // Set deck status
-        that.deck.setStatus('start');
+        that.deck.status = 'start';
         that.checkState();
 
         // First message
@@ -125,7 +121,7 @@ var JQblackjack = Class.extend({
         // Listen for deal button
         that.buttons.el.deal.unbind('click');
         that.buttons.el.deal.click(function() {
-            that.deal();
+            that.newHand();
             that.checkState();
         });
 
@@ -186,15 +182,8 @@ var JQblackjack = Class.extend({
         that.system.el.message.html(message)
     },
 
-    // Shuffle cards
-    shuffle: function(max) {
-        var that = this;
-        var num = Math.random() * max;
-        return Math.round(num) + 1;
-    },
-
     // Deal new hand
-    deal: function() {
+    newHand: function() {
         var that = this;
 
         // Check if currently 'in_play'
@@ -203,12 +192,12 @@ var JQblackjack = Class.extend({
         }
 
         // Set deck status
-        that.deck.setStatus('in_play');
+        that.deck.status = 'in_play';
 
         // Add player cards
         var count1 = 0;
         do {
-            that.addCard(that.player, 'faceup', count1 * 500);
+            that.giveCards(that.player, 'faceup', count1 * 500);
             count1++;
         } while(that.player.cards.length < 2);
 
@@ -217,7 +206,7 @@ var JQblackjack = Class.extend({
         do {
             if (count2 > 0) { var face = 'facedown'; }
             else { var face = 'faceup'; }
-            that.addCard(that.dealer, face, count2 * 500);
+            that.giveCards(that.dealer, face, count2 * 500);
             count2++;
         } while(that.dealer.cards.length < 2);
 
@@ -235,18 +224,18 @@ var JQblackjack = Class.extend({
         // Animate hands
         that.anim.hands('hit');
 
-        // Check if currently 'in_play'
-        if(that.deck.status != 'in_play') {
-            return that.message(that.messages.deal_cards);
+        // Check if status is 'start'
+        if(that.deck.status == 'start') {
+            return that.message(that.messages.hit_deal);
         }
 
-        // Check if status is over
+        // Check if status is 'over'
         if(that.deck.status == 'over') {
             return that.message(that.messages.hit_newhand);
         }
 
         // Add another card
-        that.addCard(that.player, 'faceup');
+        that.giveCards(that.player, 'faceup');
 
         // Check hit
         that.checkHit();
@@ -260,9 +249,9 @@ var JQblackjack = Class.extend({
         // Animate hands
         that.anim.hands('stand');
 
-        // Check if currently 'in_play'
-        if(that.deck.status != 'in_play') {
-            return that.message(that.messages.deal_cards);
+        // Check if status is 'start'
+        if(that.deck.status == 'start') {
+            return that.message(that.messages.hit_deal);
         }
 
         // Check if status is over
@@ -276,7 +265,7 @@ var JQblackjack = Class.extend({
     },
 
     // Add cards to actors
-    addCard: function(actor, face, timeout) {
+    giveCards: function(actor, face, timeout) {
         var that = this;
         if (timeout == undefined) { timeout = 0; }
 
@@ -290,25 +279,17 @@ var JQblackjack = Class.extend({
         }
     },
 
-    // Check blackjack
-    checkBlackjack: function() {
+    // Check hit
+    checkHit: function() {
         var that = this;
 
-        // If player has 21
+        // Check blackjack
         if (that.player.count == 21) {
             that.revealCards();
             that.player.win();
             that.gameOver();
             return that.message(that.messages.you_blackjack);
         }
-    },
-
-    // Check hit
-    checkHit: function() {
-        var that = this;
-
-        // Check blackjack
-        that.checkBlackjack(); 
 
         // If player exceeds 21
         if (that.player.count > 21) {
@@ -331,7 +312,7 @@ var JQblackjack = Class.extend({
         // Add dealer cards
         var count = 0;
         do {
-            that.addCard(that.dealer, 'facedown', count * 500);
+            that.giveCards(that.dealer, 'facedown', count * 500);
             count++;
         } while(that.dealer.count < 17);
 

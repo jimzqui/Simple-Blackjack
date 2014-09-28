@@ -14,10 +14,14 @@ var Actor = Class.extend({
         that.count = 0;
         that.el = controls.el;
         that.house = controls.house;
+
+        // Clear input data
+        that.el.count.val('');
+        that.el.score.val(0);
     },
 
-    // Retrieve count
-    getCount: function() {
+    // Retrieve hand count
+    countHand: function() {
         var that = this;
         var count = 0;
         var has_ace = false;
@@ -66,13 +70,6 @@ var Actor = Class.extend({
         var that = this;
         that.count = 0;
         that.el.count.val('');
-    },
-
-    // Reset score
-    resetScore: function() {
-        var that = this;
-        that.score = 0;
-        that.el.score.val('');
     },
 
     // Reset cards

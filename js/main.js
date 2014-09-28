@@ -3,10 +3,10 @@
  * main.js
  * (c) 2010, Jimbo Quijano
  */
-
+var game;
 $(document).ready(function() {
 
     // Create new game
-    var game = new JQblackjack();
+    game = new JQblackjack();
 
 });

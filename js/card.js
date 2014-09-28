@@ -9,73 +9,61 @@ var Card = Class.extend({
     // Init
     init: function(shuffle) {
         var that = this;
+
+        // Card num
         that.num = shuffle.value;
-        that.value = that.getValue(shuffle.value);
-        that.suit = that.getSuit(shuffle.suit);
-        that.name = that.getName();
-        that.slug = that.getSlug();
-        that.img = that.getImg();
-    },
 
-    // Get value
-    getValue: function(rand) {
-        var that = this;
-        switch(rand) {
-            case 11: return 10; break;
-            case 12: return 10; break;
-            case 13: return 10; break;
-            default: return rand;
+        // Card value
+        switch(shuffle.value) {
+            case 11: that.value = 10; break;
+            case 12: that.value = 10; break;
+            case 13: that.value = 10; break;
+            default: that.value = shuffle.value;
         }
-    },
 
-    // Get suit
-    getSuit: function(rand) {
-        var that = this;
-        switch(rand) {
-            case 1: return 'Clubs'; break;
-            case 2: return 'Spades'; break;
-            case 3: return 'Diamonds'; break;
-            case 4: return 'Hearts'; break;
-            default: return 'Clubs';
+        // Card value
+        switch(shuffle.suit) {
+            case 1: that.suit = 'Clubs'; break;
+            case 2: that.suit = 'Spades'; break;
+            case 3: that.suit = 'Diamonds'; break;
+            case 4: that.suit = 'Hearts'; break;
+            default: that.suit = 'Clubs';
         }
-    },
 
-    // Get name
-    getName: function() {
-        var that = this;
-        switch(that.num) {
-            case 1: return 'Ace'; break;
-            case 11: return 'Jack'; break;
-            case 12: return 'Queen'; break;
-            case 13: return 'King'; break;
-            default: return that.num;
+        // Card name
+        switch(shuffle.value) {
+            case 1: that.name = 'Ace'; break;
+            case 11: that.name = 'Jack'; break;
+            case 12: that.name = 'Queen'; break;
+            case 13: that.name = 'King'; break;
+            default: that.name = shuffle.value;
         }
-    },
 
-    // Get slug
-    getSlug: function() {
-        var that = this;
-        return this.num + '-' + that.suit;
-    },
+        // Card slug
+        that.slug = this.num + '-' + that.suit;
 
-    // Get img
-    getImg: function() {
-        var that = this;
-        return '<img class="card" src="cards/' + that.slug + '.png" />';
+        // Card img
+        that.img = '<img class="card" src="cards/' + that.slug + '.png" />';
     },
 
     // Insert card
     insert: function(actor, face, timeout) {
         var that = this;
+
+        // Card face
         that.face = face;
+
+        // Actor holding card
         that.actor = actor;
+
+        // Anim timout of card
         that.timeout = timeout;
 
         // Push to array
         that.actor.cards.push(that);
 
         // Update actor count
-        that.actor.count = actor.getCount();
+        that.actor.count = actor.countHand();
 
         // Only display players count
         if (that.actor.house == false) {
