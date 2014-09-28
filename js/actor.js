@@ -20,12 +20,42 @@ var Actor = Class.extend({
     getCount: function() {
         var that = this;
         var count = 0;
+        var has_ace = false;
 
         // Iterate through cards
         for (var i = 0; i < that.cards.length; i++) {
             var card = that.cards[i];
-            count += card.value;
+            if (card.name == 'Ace') { 
+                has_ace = true; 
+                count += 1;
+            } else {
+                count += card.value;
+            }
         };
+
+        // If ace is present
+        if (has_ace == true) {
+            var count2 = 0;
+
+            // Iterate through cards again
+            for (var j = 0; j < that.cards.length; j++) {
+                var card = that.cards[j];
+                if (card.name == 'Ace') { 
+                    count2 += 11;
+                } else {
+                    count2 += card.value;
+                }
+            };
+
+            // Return better count
+            if (count > count2 && count <= 21) {
+                return count;
+            } else if (count2 <= 21) {
+                return count2;
+            } else {
+                return count;
+            }
+        }
 
         // Return count
         return count;
