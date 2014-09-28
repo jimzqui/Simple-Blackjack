@@ -6,7 +6,7 @@
 
 $(document).ready(function() {
 
-    // Start game
-    jqblackjack.game.init();
+    // Create new game
+    var game = new JQblackjack();
 
 });
