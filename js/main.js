@@ -9,4 +9,7 @@ $(document).ready(function() {
     // Create new game
     var game = new JQblackjack();
 
+    // Start game
+    game.start();
+
 });

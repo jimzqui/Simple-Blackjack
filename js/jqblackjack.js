@@ -82,9 +82,6 @@ var JQblackjack = Class.extend({
 
         // Reset
         that.reset();
-
-        // Start
-        that.start();
     },
 
     // Reset game
