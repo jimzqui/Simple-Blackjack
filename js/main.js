@@ -9,7 +9,4 @@ $(document).ready(function() {
     // Start game
     jqblackjack.game.init();
 
-    // Start anim
-    jqblackjack.anim.init();
-
 });

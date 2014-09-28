@@ -100,7 +100,7 @@ body {
 	float: left;
 	position: absolute;
 	left: 151px;
-	top: 289px;
+	top: 283px;
 }
 
 #anim-hands {
@@ -243,7 +243,7 @@ body {
 	text-align: center;
 	background: none;
 	border: none;
-	font-size: 20px;
+	font-size: 17px;
 	position: absolute;
 	width: 47px;
 }

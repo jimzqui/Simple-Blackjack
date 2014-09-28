@@ -24,6 +24,11 @@
                 el: $.extend({}, Controls.system, options.system)
             };
 
+            // Construct parts
+            that.parts = {
+                el: $.extend({}, Controls.parts, options.parts)
+            };
+
             // Create player
             that.player = new Actor({
                 el: Controls.player,
@@ -185,6 +190,9 @@
         hit: function() {
             var that = this;
 
+            // Animate hands
+            jqblackjack.anim.hands('hit');
+
             // Check if currently 'in_play'
             if(that.deck.status != 'in_play') {
                 return that.message(that.messages.deal_cards);
@@ -206,6 +214,9 @@
         // Player stand
         stand: function() {
             var that = this;
+
+            // Animate hands
+            jqblackjack.anim.hands('stand');
 
             // Check if currently 'in_play'
             if(that.deck.status != 'in_play') {
@@ -377,6 +388,9 @@
         gameOver: function() {
             var that = this;
             that.deck.status = 'over';
+
+            // Animate hands
+            jqblackjack.anim.eyebrows('eyebrows-raise');
         },
 
         // Messages
@@ -400,47 +414,22 @@
     // Anim object
     jqblackjack.anim = {
 
-        // Initialize
-        init: function(options) {
-            var that = jqblackjack.anim;
-            if (options == undefined) options = {};
-
-            // Construct buttons
-            that.buttons = {
-                el: $.extend({}, Controls.buttons, options.buttons)
-            };
-
-            // Construct parts
-            that.parts = {
-                el: $.extend({}, Controls.parts, options.parts)
-            };
-
-            // Setup buttons
-            that.buttons.el.hit.click(function() {
-                that.hands('hit');
-            });
-
-            that.buttons.el.stand.click(function() {
-                that.hands('stand');
-            });
-        },
-
         eyes: function(file) {
             var that = this;
             that.clear();
-            $(that.img(file + '.gif')).appendTo(that.parts.el.eyes);
+            $(that.img(file + '.png')).appendTo(jqblackjack.game.parts.el.eyes);
         },
 
         eyebrows: function(file) {
             var that = this;
             that.clear();
-            return $(that.img(file + '.gif')).appendTo(that.parts.el.eyebrows);
+            return $(that.img(file + '.gif')).appendTo(jqblackjack.game.parts.el.eyebrows);
         },
 
         hands: function(file) {
             var that = this;
             that.clear();
-            return $(that.img(file + '.gif')).appendTo(that.parts.el.hands);
+            return $(that.img(file + '.gif')).appendTo(jqblackjack.game.parts.el.hands);
         },
 
         img: function(file, timestamp) {
@@ -450,9 +439,9 @@
 
         clear: function() {
             var that = this;
-            that.parts.el.eyes.empty();
-            that.parts.el.eyebrows.empty();
-            that.parts.el.hands.empty();
+            jqblackjack.game.parts.el.eyes.empty();
+            jqblackjack.game.parts.el.eyebrows.empty();
+            jqblackjack.game.parts.el.hands.empty();
         }
     };
 
