@@ -6,7 +6,7 @@
 
 var Deck = Class.extend({
 
-    // Init
+    // Initialize
     init: function() {
         var that = this;
 

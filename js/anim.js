@@ -6,7 +6,7 @@
 
 var Anim = Class.extend({
 
-    // Init
+    // Initialize
     init: function(parts) {
         var that = this;
         that.parts = parts;

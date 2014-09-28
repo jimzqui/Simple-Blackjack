@@ -80,9 +80,6 @@ var JQblackjack = Class.extend({
             house: true
         });
 
-        // Create anim
-        that.anim = new Anim(that.parts);
-
         // Reset
         that.reset();
 
@@ -96,6 +93,9 @@ var JQblackjack = Class.extend({
 
         // Create deck
         that.deck = new Deck();
+
+        // Create anim
+        that.anim = new Anim(that.parts);
 
         // Reset cards
         that.player.resetCards();
@@ -197,7 +197,7 @@ var JQblackjack = Class.extend({
         // Add player cards
         var count1 = 0;
         do {
-            that.giveCards(that.player, 'faceup', count1 * 500);
+            that.cardsGive(that.player, 'faceup', count1 * 500);
             count1++;
         } while(that.player.cards.length < 2);
 
@@ -206,7 +206,7 @@ var JQblackjack = Class.extend({
         do {
             if (count2 > 0) { var face = 'facedown'; }
             else { var face = 'faceup'; }
-            that.giveCards(that.dealer, face, count2 * 500);
+            that.cardsGive(that.dealer, face, count2 * 500);
             count2++;
         } while(that.dealer.cards.length < 2);
 
@@ -235,7 +235,7 @@ var JQblackjack = Class.extend({
         }
 
         // Add another card
-        that.giveCards(that.player, 'faceup');
+        that.cardsGive(that.player, 'faceup');
 
         // Check hit
         that.checkHit();
@@ -265,7 +265,7 @@ var JQblackjack = Class.extend({
     },
 
     // Add cards to actors
-    giveCards: function(actor, face, timeout) {
+    cardsGive: function(actor, face, timeout) {
         var that = this;
         if (timeout == undefined) { timeout = 0; }
 
@@ -285,7 +285,7 @@ var JQblackjack = Class.extend({
 
         // Check blackjack
         if (that.player.count == 21) {
-            that.revealCards();
+            that.cardsReveal();
             that.player.win();
             that.gameOver();
             return that.message(that.messages.you_blackjack);
@@ -293,7 +293,7 @@ var JQblackjack = Class.extend({
 
         // If player exceeds 21
         if (that.player.count > 21) {
-            that.revealCards();
+            that.cardsReveal();
             that.dealer.win();
             that.gameOver();
             return that.message(that.messages.you_busted);
@@ -312,7 +312,7 @@ var JQblackjack = Class.extend({
         // Add dealer cards
         var count = 0;
         do {
-            that.giveCards(that.dealer, 'facedown', count * 500);
+            that.cardsGive(that.dealer, 'facedown', count * 500);
             count++;
         } while(that.dealer.count < 17);
 
@@ -329,14 +329,14 @@ var JQblackjack = Class.extend({
 
         // If player tied with dealer
         if (that.player.count == that.dealer.count) {
-            that.revealCards();
+            that.cardsReveal();
             that.gameOver();
             return that.message(that.messages.game_tied);
         }
 
         // If player exceeds 21
         else if (that.player.count > 21) {
-            that.revealCards();
+            that.cardsReveal();
             that.dealer.win();
             that.gameOver();
             return that.message(that.messages.you_busted);
@@ -344,7 +344,7 @@ var JQblackjack = Class.extend({
 
         // If dealer exceeds 21
         else if (that.dealer.count > 21) {
-            that.revealCards();
+            that.cardsReveal();
             that.player.win();
             that.gameOver();
             return that.message(that.messages.house_bust);
@@ -352,7 +352,7 @@ var JQblackjack = Class.extend({
 
         // If player has greater than the dealer
         else if (that.player.count > that.dealer.count) {
-            that.revealCards();
+            that.cardsReveal();
             that.player.win();
             that.gameOver();
             return that.message(that.messages.you_win);
@@ -360,7 +360,7 @@ var JQblackjack = Class.extend({
 
         // If dealer has greater than the player
         else if (that.player.count < that.dealer.count) {
-            that.revealCards();
+            that.cardsReveal();
             that.dealer.win();
             that.gameOver();
             return that.message(that.messages.house_win);
@@ -368,7 +368,7 @@ var JQblackjack = Class.extend({
 
         // If player has 21
         else if (that.player.count == 21) {
-            that.revealCards();
+            that.cardsReveal();
             that.player.win();
             that.gameOver();
             return that.message(that.messages.house_blackjack);
@@ -376,7 +376,7 @@ var JQblackjack = Class.extend({
 
         // If dealer has 21
         else if (that.dealer.count == 21) {
-            that.revealCards();
+            that.cardsReveal();
             that.dealer.win();
             that.gameOver();
             return that.message(that.messages.house_blackjack);
@@ -384,7 +384,7 @@ var JQblackjack = Class.extend({
 
         // If player is close to dealer's blackjack
         else if (that.player.count == 20 && that.dealer.count == 21) {
-            that.revealCards();
+            that.cardsReveal();
             that.dealer.win();
             that.gameOver();
             return that.message(that.messages.tough_luck);
@@ -392,7 +392,7 @@ var JQblackjack = Class.extend({
     },
 
     // Reveal dealer's card
-    revealCards: function() {
+    cardsReveal: function() {
         var that = this;
 
         // Iterate each dealer's card

@@ -6,7 +6,7 @@
 
 var Actor = Class.extend({
 
-    // Init
+    // Initialize
     init: function(controls) {
         var that = this;
         that.cards = [];
@@ -15,7 +15,7 @@ var Actor = Class.extend({
         that.el = controls.el;
         that.house = controls.house;
 
-        // Clear input data
+        // Clear input
         that.el.count.val('');
         that.el.score.val(0);
     },

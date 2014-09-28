@@ -6,7 +6,7 @@
 
 var Card = Class.extend({
 
-    // Init
+    // Initialize
     init: function(shuffle) {
         var that = this;
 
