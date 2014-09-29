@@ -1,5 +1,5 @@
 /**
- * Simple Blackjack
+ * JQBlackjack - Main Class
  * jqblackjack.js
  * (c) 2010, Jimbo Quijano
  */

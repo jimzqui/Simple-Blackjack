@@ -1,5 +1,5 @@
 /**
- * Simple Blackjack - Main
+ * JQBlackjack - Main
  * main.js
  * (c) 2010, Jimbo Quijano
  */

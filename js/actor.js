@@ -1,5 +1,5 @@
 /**
- * Simple Blackjack - Actor Class
+ * JQBlackjack - Actor Class
  * actor.js
  * (c) 2010, Jimbo Quijano
  */

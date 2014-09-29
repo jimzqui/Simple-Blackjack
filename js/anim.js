@@ -1,5 +1,5 @@
 /**
- * Simple Blackjack - Anim Class
+ * JQBlackjack - Anim Class
  * anim.js
  * (c) 2010, Jimbo Quijano
  */

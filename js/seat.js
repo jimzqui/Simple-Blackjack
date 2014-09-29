@@ -1,5 +1,5 @@
 /**
- * Simple Blackjack - Seat Class
+ * JQBlackjack - Seat Class
  * seat.js
  * (c) 2010, Jimbo Quijano
  */

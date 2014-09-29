@@ -1,5 +1,5 @@
 /**
- * Simple Blackjack - Deck Class
+ * JQBlackjack - Deck Class
  * deck.js
  * (c) 2010, Jimbo Quijano
  */
