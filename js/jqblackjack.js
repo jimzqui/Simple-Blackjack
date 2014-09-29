@@ -331,6 +331,14 @@ var JQblackjack = Class.extend({
             return that.message(that.messages.game_tied);
         }
 
+        // If player is close to dealer's blackjack
+        else if (that.player.count == 20 && that.dealer.count == 21) {
+            that.cardsReveal();
+            that.dealer.win();
+            that.gameOver();
+            return that.message(that.messages.tough_luck);
+        }
+
         // If player exceeds 21
         else if (that.player.count > 21) {
             that.cardsReveal();
@@ -377,14 +385,6 @@ var JQblackjack = Class.extend({
             that.dealer.win();
             that.gameOver();
             return that.message(that.messages.house_blackjack);
-        }
-
-        // If player is close to dealer's blackjack
-        else if (that.player.count == 20 && that.dealer.count == 21) {
-            that.cardsReveal();
-            that.dealer.win();
-            that.gameOver();
-            return that.message(that.messages.tough_luck);
         }
     },
 
