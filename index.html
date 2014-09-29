@@ -1,78 +1,91 @@
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9 lt-ie10"> <![endif]-->
-<!--[if IE 9]><html class="no-js lt-ie10"><![endif]-->
-<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"><!--<![endif]-->
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Simple Blackjack v1.0</title>
-		<meta name="description" content="<?php echo $title_for_layout ?>">
-		<meta name="HandheldFriendly" content="True">
-		<meta name="MobileOptimized" content="320">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-- Load CSS -->
-		<link rel="stylesheet" href="css/style.css" type="text/css" />
-		<link rel="stylesheet" href="css/typography.css" type="text/css" />
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-		<!-- Load JS -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	</head>
-	<body>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-		<!-- Main content -->
-		<div id="wrapper">
-			<div id="demo">
+        <!-- Main content -->
+        <div id="wrapper">
+            <div id="demo">
 
-				<!-- Animations -->
-				<div id="anim-eyes"></div>
-				<div id="anim-eyebrows"></div>
-				<div id="anim-hands"></div>
-				
-				<!-- Message -->
-				<div id="message"></div>
-				<div id="button-deal" class="button">Deal</div>
-				<div id="button-newhand" class="button">New Hand</div>
-				
-				<!-- Actions -->
-				<div id="actions">
-					<a id="button-hit" class="button">Hit</a>
-					<a id="button-stand" class="button">Stand</a>
-					<div id="cards">
-						<div id="player-cards" class="cards">
-							<input id="player-score" class="score" type="text" disabled="disabled"/>
-						</div>
-						<div id="dealer-cards" class="cards">
-							<input id="dealer-score" class="score" type="text" disabled="disabled"/>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Player -->
-				<div id="player">
-					<span id="player-hands" class="hands"></span>
-					<dfn class="actor">Player</dfn>
-					<input id="player-count" type="text" class="count" disabled="disabled"/>
-					<input id="player-countbase" type="hidden" class="countbase"/>
-				</div>
+                <!-- Animations -->
+                <div id="anim-eyes"></div>
+                <div id="anim-eyebrows"></div>
+                <div id="anim-hands"></div>
+                
+                <!-- Message -->
+                <div id="message"></div>
+                <div id="button-deal" class="button">Deal</div>
+                <div id="button-newhand" class="button">New Hand</div>
+                
+                <!-- Actions -->
+                <div id="actions">
+                    <a id="button-hit" class="button">Hit</a>
+                    <a id="button-stand" class="button">Stand</a>
+                    <div id="cards">
+                        <div id="player-cards" class="cards">
+                            <input id="player-score" class="score" type="text" disabled="disabled"/>
+                        </div>
+                        <div id="dealer-cards" class="cards">
+                            <input id="dealer-score" class="score" type="text" disabled="disabled"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Player -->
+                <div id="player">
+                    <span id="player-hands" class="hands"></span>
+                    <dfn class="actor">Player</dfn>
+                    <input id="player-count" type="text" class="count" disabled="disabled"/>
+                    <input id="player-countbase" type="hidden" class="countbase"/>
+                </div>
 
-				<!-- Dealer -->
-				<div id="dealer">
-					<span id="dealer-hands" class="hands"></span>
-					<dfn class="actor">Dealer</dfn>
-					<input id="dealer-count" type="text" class="count" disabled="disabled"/>
-					<input id="dealer-countbase" type="hidden" class="countbase"/>
-				</div>
-			</div>
-		</div>
+                <!-- Dealer -->
+                <div id="dealer">
+                    <span id="dealer-hands" class="hands"></span>
+                    <dfn class="actor">Dealer</dfn>
+                    <input id="dealer-count" type="text" class="count" disabled="disabled"/>
+                    <input id="dealer-countbase" type="hidden" class="countbase"/>
+                </div>
+            </div>
+        </div>
 
-		<!-- Main JS -->
-		<script type="text/javascript" src="js/class.js"></script>
-		<script type="text/javascript" src="js/deck.js"></script>
-		<script type="text/javascript" src="js/card.js"></script>
-		<script type="text/javascript" src="js/actor.js"></script>
-		<script type="text/javascript" src="js/anim.js"></script>
-		<script type="text/javascript" src="js/jqblackjack.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
-	</body>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/class.js"></script>
+        <script src="js/deck.js"></script>
+        <script src="js/card.js"></script>
+        <script src="js/actor.js"></script>
+        <script src="js/anim.js"></script>
+        <script src="js/jqblackjack.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
 </html>
