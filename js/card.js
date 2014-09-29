@@ -1,5 +1,5 @@
 /**
- * JQBlackjack - Card Class
+ * JQblackjack - Card Class
  * card.js
  * (c) 2010, Jimbo Quijano
  */

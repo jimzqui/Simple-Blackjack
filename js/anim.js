@@ -1,5 +1,5 @@
 /**
- * JQBlackjack - Anim Class
+ * JQblackjack - Anim Class
  * anim.js
  * (c) 2010, Jimbo Quijano
  */

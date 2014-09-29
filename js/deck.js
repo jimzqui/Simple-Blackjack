@@ -1,5 +1,5 @@
 /**
- * JQBlackjack - Deck Class
+ * JQblackjack - Deck Class
  * deck.js
  * (c) 2010, Jimbo Quijano
  */

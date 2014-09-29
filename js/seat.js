@@ -1,5 +1,5 @@
 /**
- * JQBlackjack - Seat Class
+ * JQblackjack - Seat Class
  * seat.js
  * (c) 2010, Jimbo Quijano
  */

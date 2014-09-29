@@ -1,5 +1,5 @@
 /**
- * JQBlackjack - Actor Class
+ * JQblackjack - Actor Class
  * actor.js
  * (c) 2010, Jimbo Quijano
  */

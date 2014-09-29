@@ -1,4 +1,4 @@
-# JQBlackjack v1.0
+# JQblackjack v1.0
 
 This project is a simple demonstration of a blackjack game. No bettings, just scores.
 

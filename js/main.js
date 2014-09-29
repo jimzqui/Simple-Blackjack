@@ -1,5 +1,5 @@
 /**
- * JQBlackjack - Main
+ * JQblackjack - Main
  * main.js
  * (c) 2010, Jimbo Quijano
  */

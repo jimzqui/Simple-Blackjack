@@ -1,5 +1,5 @@
 /**
- * JQBlackjack - Main Class
+ * JQblackjack - Main Class
  * jqblackjack.js
  * (c) 2010, Jimbo Quijano
  */
